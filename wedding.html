@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Venkateswarao & Jyothi | Royal Wedding</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Great+Vibes&family=Playfair+Display:wght@400;600&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    overflow:hidden;
+    background:#09030a;
+    color:#fff;
+    font-family:'Playfair Display',serif;
+}
+
+/* ================= ROYAL BACKGROUND ================= */
+
+body:before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+        radial-gradient(circle at center,#6d173c 0%,#260819 38%,#09030a 80%);
+    z-index:-3;
+}
+
+body:after{
+    content:"";
+    position:fixed;
+    inset:0;
+    background-image:
+        radial-gradient(#f7d77c 1px,transparent 1px),
+        radial-gradient(#fff0aa 1px,transparent 1px);
+    background-size:110px 110px,170px 170px;
+    opacity:.18;
+    animation:stars 8s linear infinite;
+    z-index:-2;
+}
+
+@keyframes stars{
+    from{transform:translateY(0)}
+    to{transform:translateY(-110px)}
+}
+
+/* ================= INTRO SCREEN ================= */
+
+.intro{
+    position:fixed;
+    inset:0;
+    z-index:100;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    background:
+        radial-gradient(circle,#56122f,#170613 60%,#050205);
+    transition:1.5s ease;
+}
+
+.intro.hide{
+    opacity:0;
+    visibility:hidden;
+}
+
+.intro-content{
+    padding:30px;
+}
+
+.crown{
+    font-size:70px;
+    color:#f5d477;
+    text-shadow:
+        0 0 10px #fff0a0,
+        0 0 30px #d89b2b;
+    animation:crownGlow 2s infinite alternate;
+}
+
+@keyframes crownGlow{
+    from{transform:scale(1)}
+    to{transform:scale(1.12)}
+}
+
+.intro-small{
+    font-family:Cinzel,serif;
+    font-size:13px;
+    letter-spacing:6px;
+    color:#f0d58b;
+    margin-top:10px;
+}
+
+.intro h1{
+    font-family:'Great Vibes',cursive;
+    font-size:80px;
+    font-weight:400;
+    color:#ffe7a0;
+    margin:15px 0;
+    text-shadow:0 0 20px #d49a36;
+}
+
+.intro-sub{
+    font-family:Cinzel,serif;
+    letter-spacing:4px;
+    color:#fff2c5;
+}
+
+.open-btn{
+    margin-top:40px;
+    padding:17px 38px;
+    border:1px solid #e7c15c;
+    border-radius:50px;
+    background:linear-gradient(135deg,#791c43,#26091c);
+    color:#ffe9a5;
+    font-family:Cinzel,serif;
+    font-size:12px;
+    letter-spacing:3px;
+    cursor:pointer;
+    box-shadow:0 0 25px rgba(232,190,81,.3);
+    transition:.4s;
+}
+
+.open-btn:hover{
+    transform:scale(1.08);
+    box-shadow:0 0 45px rgba(232,190,81,.7);
+}
+
+/* ================= BOOK ================= */
+
+.scene{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    perspective:2500px;
+}
+
+.book{
+    width:min(900px,92vw);
+    height:min(650px,82vh);
+    position:relative;
+    transform-style:preserve-3d;
+}
+
+.page{
+    position:absolute;
+    inset:0;
+    border-radius:10px;
+}
+
+/* Inside page */
+
+.inside{
+    background:
+        radial-gradient(circle at center,#fff8df,#ead39b);
+    color:#461427;
+    border:3px solid #d5ad55;
+    box-shadow:
+        inset 0 0 60px rgba(102,55,12,.18),
+        0 30px 60px rgba(0,0,0,.6);
+}
+
+.inside:before{
+    content:"";
+    position:absolute;
+    inset:15px;
+    border:1px solid #bd9344;
+}
+
+/* Front cover */
+
+.cover{
+    z-index:5;
+    transform-origin:left center;
+    transition:
+        transform 2.5s cubic-bezier(.75,0,.15,1),
+        box-shadow 2.5s;
+    background:
+        radial-gradient(circle at center,#6c183a,#35091f 55%,#16050e);
+    border:3px solid #d9b65b;
+    box-shadow:
+        inset 0 0 70px rgba(0,0,0,.5),
+        15px 25px 50px rgba(0,0,0,.7);
+    backface-visibility:hidden;
+}
+
+.book.open .cover{
+    transform:rotateY(-178deg);
+    box-shadow:20px 20px 50px rgba(0,0,0,.5);
+}
+
+.cover-content{
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:50px;
+    position:relative;
+}
+
+.cover-content:before{
+    content:"";
+    position:absolute;
+    inset:18px;
+    border:1px solid #e1bf69;
+}
+
+.cover-crown{
+    font-size:50px;
+    color:#f4d16d;
+}
+
+.cover-title{
+    font-family:Cinzel,serif;
+    letter-spacing:6px;
+    font-size:12px;
+    color:#eacb7b;
+    margin-top:15px;
+}
+
+.names{
+    font-family:'Great Vibes',cursive;
+    font-size:65px;
+    color:#ffe9a6;
+    margin:10px;
+    text-shadow:0 0 20px rgba(255,210,100,.5);
+}
+
+.and{
+    font-family:'Great Vibes',cursive;
+    color:#d9ad4e;
+    font-size:35px;
+}
+
+.cover-date{
+    margin-top:20px;
+    font-family:Cinzel,serif;
+    color:#f4d98c;
+    letter-spacing:4px;
+}
+
+/* ================= INSIDE CONTENT ================= */
+
+.inside-content{
+    height:100%;
+    padding:55px 70px;
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.small-title{
+    font-family:Cinzel,serif;
+    letter-spacing:5px;
+    font-size:11px;
+    color:#8b5a20;
+}
+
+.inside h1{
+    font-family:'Great Vibes',cursive;
+    font-size:65px;
+    font-weight:400;
+    color:#731b3e;
+    margin:10px 0;
+}
+
+.gold-line{
+    width:170px;
+    height:1px;
+    background:linear-gradient(
+        to right,
+        transparent,
+        #b98a35,
+        transparent
+    );
+    margin:8px 0 18px;
+}
+
+.message{
+    max-width:650px;
+    line-height:1.8;
+    font-size:17px;
+    color:#543037;
+}
+
+.couple{
+    font-family:Cinzel,serif;
+    color:#701c3d;
+    letter-spacing:3px;
+    font-size:18px;
+    margin:18px 0;
+    font-weight:600;
+}
+
+.date-box{
+    padding:13px 30px;
+    border-top:1px solid #ba8d3b;
+    border-bottom:1px solid #ba8d3b;
+    margin:5px 0 15px;
+}
+
+.date{
+    font-family:Cinzel,serif;
+    font-weight:bold;
+    font-size:22px;
+    letter-spacing:3px;
+    color:#6d1939;
+}
+
+.date-sub{
+    font-size:11px;
+    letter-spacing:3px;
+    margin-top:5px;
+}
+
+.blessing{
+    margin-top:auto;
+    padding:16px 25px;
+    max-width:700px;
+    border-top:1px solid rgba(160,115,45,.5);
+    color:#563034;
+    line-height:1.7;
+    font-size:15px;
+}
+
+.blessing-title{
+    font-family:Cinzel,serif;
+    font-size:12px;
+    letter-spacing:3px;
+    color:#781d40;
+    font-weight:bold;
+}
+
+/* ================= PETALS ================= */
+
+.petal{
+    position:fixed;
+    top:-50px;
+    width:18px;
+    height:12px;
+    border-radius:100% 0 100% 0;
+    background:linear-gradient(135deg,#ff9bad,#a80e3b);
+    box-shadow:0 0 8px rgba(255,100,140,.4);
+    z-index:150;
+    pointer-events:none;
+    animation:fall linear forwards;
+}
+
+@keyframes fall{
+    0%{
+        transform:
+            translateY(-50px)
+            translateX(0)
+            rotate(0deg);
+        opacity:0;
+    }
+
+    10%{opacity:1}
+
+    50%{
+        transform:
+            translateY(50vh)
+            translateX(100px)
+            rotate(220deg);
+    }
+
+    100%{
+        transform:
+            translateY(110vh)
+            translateX(-120px)
+            rotate(600deg);
+        opacity:.1;
+    }
+}
+
+/* ================= GOLD SPARKLES ================= */
+
+.sparkle{
+    position:fixed;
+    width:5px;
+    height:5px;
+    background:#ffe995;
+    border-radius:50%;
+    box-shadow:0 0 15px #ffd35c;
+    pointer-events:none;
+    z-index:20;
+    animation:sparkle 2s ease-out forwards;
+}
+
+@keyframes sparkle{
+    0%{
+        transform:scale(0);
+        opacity:1;
+    }
+    100%{
+        transform:translateY(-120px) scale(1.5);
+        opacity:0;
+    }
+}
+
+/* ================= MUSIC BUTTON ================= */
+
+.music{
+    position:fixed;
+    top:20px;
+    right:20px;
+    z-index:200;
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    border:1px solid #d6ad52;
+    background:#390b22;
+    color:#f5d680;
+    cursor:pointer;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:650px){
+
+    .intro h1{
+        font-size:55px;
+    }
+
+    .intro-small{
+        font-size:9px;
+        letter-spacing:3px;
+    }
+
+    .book{
+        height:610px;
+    }
+
+    .inside-content{
+        padding:45px 30px;
+    }
+
+    .inside h1{
+        font-size:48px;
+    }
+
+    .names{
+        font-size:48px;
+    }
+
+    .message{
+        font-size:14px;
+    }
+
+    .blessing{
+        font-size:13px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= GRAND OPENING ================= -->
+
+<div class="intro" id="intro">
+
+    <div class="intro-content">
+
+        <div class="crown">♕</div>
+
+        <div class="intro-small">
+            A GRAND ROYAL WEDDING
+        </div>
+
+        <h1>
+            Venkateswarao & Jyothi
+        </h1>
+
+        <div class="intro-sub">
+            TWO HEARTS • ONE BEAUTIFUL JOURNEY
+        </div>
+
+        <button class="open-btn" onclick="openInvitation()">
+            ✦ OPEN THE ROYAL INVITATION ✦
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- MUSIC BUTTON -->
+
+<button class="music" onclick="toggleMusic()" id="music">
+    ♫
+</button>
+
+
+<!-- ================= BOOK ================= -->
+
+<div class="scene">
+
+    <div class="book" id="book">
+
+        <!-- FRONT COVER -->
+
+        <div class="page cover">
+
+            <div class="cover-content">
+
+                <div class="cover-crown">
+                    ♕
+                </div>
+
+                <div class="cover-title">
+                    THE ROYAL UNION OF
+                </div>
+
+                <div class="names">
+                    Venkateswarao
+                </div>
+
+                <div class="and">
+                    &
+                </div>
+
+                <div class="names">
+                    Jyothi
+                </div>
+
+                <div class="cover-title">
+                    WITH LOVE • WITH GRACE • FOREVER
+                </div>
+
+                <div class="cover-date">
+                    31 MAY 2013
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- INSIDE PAGE -->
+
+        <div class="page inside">
+
+            <div class="inside-content">
+
+                <div class="small-title">
+                    A CELEBRATION OF LOVE & TOGETHERNESS
+                </div>
+
+                <h1>
+                    Two Hearts, One Destiny
+                </h1>
+
+                <div class="gold-line"></div>
+
+                <p class="message">
+                    With hearts filled with joy and gratitude,
+                    we celebrate the beautiful beginning of a
+                    lifelong journey together.
+                </p>
+
+                <div class="couple">
+                    VENKATESWARAO & JYOTHI
+                </div>
+
+                <div class="date-box">
+
+                    <div class="date">
+                        MAY 31st, 2013
+                    </div>
+
+                    <div class="date-sub">
+                        THE DAY TWO SOULS BECAME ONE
+                    </div>
+
+                </div>
+
+                <p class="message">
+                    Your gracious presence, warm wishes and
+                    precious blessings make this celebration
+                    truly complete.
+                </p>
+
+                <!-- MANDATORY BLESSING -->
+
+                <div class="blessing">
+
+                    <div class="blessing-title">
+                        ✦ YOUR BLESSINGS ARE OUR GREATEST TREASURE ✦
+                    </div>
+
+                    <br>
+
+                    May love illuminate their path,
+                    may happiness fill their home,
+                    and may every moment of their life
+                    be blessed with peace, prosperity and joy.
+
+                    <br><br>
+
+                    <i>
+                        “May this sacred bond remain
+                        blessed, beautiful and everlasting.”
+                    </i>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* ================= OPEN INVITATION ================= */
+
+function openInvitation(){
+
+    document.getElementById("intro").classList.add("hide");
+
+    setTimeout(function(){
+
+        document.getElementById("book")
+            .classList.add("open");
+
+        createPetals(70);
+        createSparkles(35);
+
+    },500);
+
+}
+
+
+/* ================= PETAL EFFECT ================= */
+
+function createPetals(amount){
+
+    for(let i=0;i<amount;i++){
+
+        const petal=document.createElement("div");
+
+        petal.className="petal";
+
+        petal.style.left=
+            Math.random()*100+"vw";
+
+        petal.style.animationDuration=
+            (5+Math.random()*7)+"s";
+
+        petal.style.animationDelay=
+            Math.random()*3+"s";
+
+        petal.style.transform=
+            "rotate("+Math.random()*360+"deg)";
+
+        document.body.appendChild(petal);
+
+        setTimeout(()=>{
+            petal.remove();
+        },12000);
+
+    }
+
+}
+
+
+/* ================= GOLD SPARKLES ================= */
+
+function createSparkles(amount){
+
+    for(let i=0;i<amount;i++){
+
+        const sparkle=document.createElement("div");
+
+        sparkle.className="sparkle";
+
+        sparkle.style.left=
+            (20+Math.random()*60)+"vw";
+
+        sparkle.style.top=
+            (35+Math.random()*40)+"vh";
+
+        sparkle.style.animationDelay=
+            Math.random()*1.5+"s";
+
+        document.body.appendChild(sparkle);
+
+        setTimeout(()=>{
+            sparkle.remove();
+        },2500);
+
+    }
+
+}
+
+
+/* ================= CLICK BOOK TO REOPEN ================= */
+
+document.getElementById("book").addEventListener("click",function(){
+
+    this.classList.toggle("open");
+
+    createPetals(30);
+    createSparkles(20);
+
+});
+
+
+/* ================= ROYAL AMBIENT SOUND ================= */
+
+let audioContext;
+let musicPlaying=false;
+let musicTimer;
+
+function toggleMusic(){
+
+    if(!audioContext){
+
+        audioContext =
+            new (window.AudioContext ||
+                 window.webkitAudioContext)();
+
+    }
+
+    if(musicPlaying){
+
+        musicPlaying=false;
+
+        clearInterval(musicTimer);
+
+        document.getElementById("music").innerHTML="♫";
+
+        return;
+    }
+
+    musicPlaying=true;
+
+    document.getElementById("music").innerHTML="■";
+
+    const notes=[
+        261.63,
+        329.63,
+        392.00,
+        523.25,
+        392.00,
+        329.63
+    ];
+
+    let index=0;
+
+    musicTimer=setInterval(()=>{
+
+        const oscillator=
+            audioContext.createOscillator();
+
+        const gain=
+            audioContext.createGain();
+
+        oscillator.type="sine";
+
+        oscillator.frequency.value=
+            notes[index++ % notes.length];
+
+        gain.gain.setValueAtTime(
+            0,
+            audioContext.currentTime
+        );
+
+        gain.gain.linearRampToValueAtTime(
+            .08,
+            audioContext.currentTime+.1
+        );
+
+        gain.gain.exponentialRampToValueAtTime(
+            .001,
+            audioContext.currentTime+1.5
+        );
+
+        oscillator.connect(gain);
+        gain.connect(audioContext.destination);
+
+        oscillator.start();
+
+        oscillator.stop(
+            audioContext.currentTime+1.6
+        );
+
+    },700);
+
+}
+
+</script>
+
+</body>
+</html>
